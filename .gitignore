@@ -1,0 +1,5 @@
+.vscode
+
+# Dependências
+bin/
+obj/
