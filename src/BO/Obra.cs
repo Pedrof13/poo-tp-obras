@@ -12,7 +12,7 @@ using System;
 namespace BO
 {
     /// <summary>
-    /// Classe que representa uma obra de uma construção civil
+    /// Classe que representa uma obra de construção civil
     /// </summary>
     public class Obra
     {
@@ -20,9 +20,9 @@ namespace BO
 
         int id;
         string nome;
+        Morada morada;
         DateTime dataInicio;
         DateTime dataFim;
-        Morada morada;
 
         #endregion
 
@@ -35,28 +35,28 @@ namespace BO
         /// </summary>
         public Obra()
         {
-            id = -1;
+            id =-1;
             nome = String.Empty;
+            morada = new Morada();
             dataInicio = DateTime.MinValue; //01/01/0001 00:00:00
             dataFim = DateTime.MaxValue; //31/12/9999 23:59:59.9999999
-            morada = new Morada();
         }
 
         /// <summary>
         /// Cria uma obra com valores definidos pelos parâmetros
         /// </summary>
-        /// <param name="i">identificador único</param>
+        /// <param name="i">identificador único da obra</param>
         /// <param name="n">nome da obra</param>
-        /// <param name="inicio">data de início</param>
-        /// <param name="fim">data de fim prevista</param>
         /// <param name="m">morada da obra</param>
-        public Obra(int i, string n, DateTime inicio, DateTime fim, Morada m)
+        /// <param name="inicio">data de inicio</param>
+        /// <param name="fim">data de fim prevista</param>
+        public Obra(int i, string n, Morada m, DateTime inicio, DateTime fim)
         {
             id = i;
             nome = n;
+            morada = m;
             dataInicio = inicio;
             dataFim = fim;
-            morada = m;
         }
 
         #endregion
@@ -66,13 +66,19 @@ namespace BO
         public int Id
         {
             get { return id; }
-            set { if (value > 0) id = value; }
+            set { if(value > 0) id = value; }    
         }
 
         public string Nome
         {
             get { return nome; }
             set { nome = value; }
+        }
+
+        public Morada Morada
+        {
+            get { return morada; }
+            set { morada = value; }
         }
 
         public DateTime DataInicio
@@ -87,15 +93,10 @@ namespace BO
             set { dataFim = value; }
         }
 
-        public Morada Morada
-        {
-            get { return morada; }
-            set { morada = value; }
-        }
-
         #endregion
 
         #region OutrosMetodos
+
         #endregion
 
         #endregion

@@ -58,7 +58,7 @@ namespace BO
 
         public string Localidade
         {
-            get { return localidade.ToUpper(); }
+            get { return localidade.ToUpper(); }// ToUpper() - Converte string para maiúsculas 
             set { localidade = value; }
         }
 
