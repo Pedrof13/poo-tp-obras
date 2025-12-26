@@ -36,6 +36,11 @@ namespace Dados
 
         #region OutrosMetodos
 
+        /// <summary>
+        /// Função para inserir um serviço à lista
+        /// </summary>
+        /// <param name="s">serviço</param>
+        /// <returns></returns>
         public static bool InsereServico(Servico s)
         {
             if(servicos.Contains(s)) return false;

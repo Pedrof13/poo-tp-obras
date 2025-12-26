@@ -75,6 +75,48 @@ namespace BO
 
         #endregion
 
+        #region Overrides
+
+        /*
+        public override bool Equals(object obj)
+        {
+            Servico aux;
+            if(obj is Servico) // Verifica se o objeto é um Servico
+            {
+                aux = obj as Servico; //Converte o objeto
+                return (aux.Id == this.Id);
+
+            }
+            else return false;
+        }
+        */
+        
+        /// <summary>
+        /// Operador para comprar se os serviços são iguais pelos ids
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="s2"></param>
+        /// <returns></returns>
+        public static bool operator==(Servico s1, Servico s2)
+        {
+            if(s1.Id == s2.Id) return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Operador para comprar se os serviços são diferentes pelos ids
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="s2"></param>
+        /// <returns></returns>
+        public static bool operator!=(Servico s1, Servico s2)
+        {
+            if(s1.Id != s2.Id) return true;
+            return false;
+        }
+
+        #endregion
+
         #region OutrosMetodos
         #endregion
 
