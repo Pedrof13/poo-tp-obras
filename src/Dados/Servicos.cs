@@ -12,10 +12,13 @@ using BO;
 
 namespace Dados
 {
-    public class Servicos
+    /// <summary>
+    /// Classe que representa uma obra com muitos serviços
+    /// </summary>
+    public class Servicos : Obra
     {
         #region Atributos
-        static List<Servico> servicos;
+        List<Servico> servicos;
         #endregion
 
         #region Metodos
@@ -25,7 +28,7 @@ namespace Dados
         /// <summary>
         /// Construtor sem parâmetros
         /// </summary>
-        static Servicos()
+        public Servicos()
         {
             servicos = new List<Servico>();
         }
@@ -41,7 +44,7 @@ namespace Dados
         /// </summary>
         /// <param name="s">serviço</param>
         /// <returns></returns>
-        public static bool InsereServico(Servico s)
+        public bool InsereServico(Servico s)
         {
             if(servicos.Contains(s)) return false; //Verifica se existe na lista
             servicos.Add(s); //Adiciona à lista
@@ -53,7 +56,7 @@ namespace Dados
         /// </summary>
         /// <param name="id">id do serviço</param>
         /// <returns>Serviço</returns>
-        public static Servico? QuemServico(int id)
+        public Servico? QuemServico(int id)
         {
             foreach (Servico s in servicos) //Percorre a lista
             {
@@ -70,7 +73,7 @@ namespace Dados
         /// </summary>
         /// <param name="s">serviço</param>
         /// <returns>True = Foi removido. False = Não está na lista</returns>
-        public static bool RemoveServico(Servico s)
+        public bool RemoveServico(Servico s)
         {
             if(!servicos.Contains(s)) return false;
             servicos.Remove(s);

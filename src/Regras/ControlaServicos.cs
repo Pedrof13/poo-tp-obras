@@ -29,36 +29,39 @@ namespace Regras
         #region OutrosMetodos
 
         /// <summary>
-        /// Função que tenta inserir um serviço à lista
+        /// Método que tenta inserir um serviço na lista
         /// </summary>
         /// <param name="s">serviço</param>
+        /// <param name="obraCompleta">serviços</param>
         /// <returns>True = Inseriu na lista. False = Já está na lista</returns>
-        public static bool TentaInserirServico(Servico s)
+        public static bool TentaInserirServico(Servico s, Servicos obraCompleta)
         {
-            bool resposta = Servicos.InsereServico(s);
+            bool resposta = obraCompleta.InsereServico(s);
             return resposta;
         }
 
         /// <summary>
-        /// Função que tenta encontrar o serviço na lista pelo id
+        /// Método que tenta encontrar na lista um serviço pelo id
         /// </summary>
         /// <param name="id">id do serviço</param>
+        /// <param name="obraCompleta">serviços</param>
         /// <returns></returns>
-        public static Servico? TentaEncontrarServico(int id)
+        public static Servico? TentaEncontrarServico(int id, Servicos obraCompleta)
         {
-            Servico? s = Servicos.QuemServico(id);
+            Servico? s = obraCompleta.QuemServico(id);
             return s;
 
         }
 
         /// <summary>
-        /// Função que tenta remover um serviço à lista
+        /// Método que tenta remover um serviço na lista
         /// </summary>
         /// <param name="s">serviço</param>
+        /// <param name="obraCompleta">serviços</param>
         /// <returns>True = Foi removido. False = Não está na lista</returns>
-        public static bool TentaRemoverServico(Servico s)
+        public static bool TentaRemoverServico(Servico s, Servicos obraCompleta)
         {
-            bool resposta = Servicos.RemoveServico(s);
+            bool resposta = obraCompleta.RemoveServico(s);
             return resposta;
         }
 

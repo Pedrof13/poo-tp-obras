@@ -11,6 +11,7 @@
 
 using System;
 using BO;
+using Dados;
 using Regras;
 
 namespace GereObra
@@ -29,10 +30,13 @@ namespace GereObra
             //Cria uma obra
             Obra o = new Obra(1,"Construção da ponte 123", m, hoje, amanha);
 
-            //Cria um servico
+             //Cria um servico
             Servico s1 = new Servico();
+            
+            //Cria uma obra completa
+            Servicos obraCompleta = new Servicos();
 
-            bool res = ControlaServicos.TentaInserirServico(s1);
+            bool res = ControlaServicos.TentaInserirServico(s1, obraCompleta);
 
             if(res == true)
             {
@@ -43,7 +47,7 @@ namespace GereObra
                 //erro
             }
 
-            Servico? s2 = ControlaServicos.TentaEncontrarServico(1);
+            Servico? s2 = ControlaServicos.TentaEncontrarServico(1, obraCompleta);
 
             if(s2 == null)
             {
@@ -54,7 +58,7 @@ namespace GereObra
                 //Encontrou
             }
 
-            res = ControlaServicos.TentaRemoverServico(s1);
+            res = ControlaServicos.TentaRemoverServico(s1, obraCompleta);
 
             if(res == true)
             {
