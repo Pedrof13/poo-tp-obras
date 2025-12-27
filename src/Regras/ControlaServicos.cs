@@ -28,9 +28,37 @@ namespace Regras
 
         #region OutrosMetodos
 
+        /// <summary>
+        /// Função que tenta inserir um serviço à lista
+        /// </summary>
+        /// <param name="s">serviço</param>
+        /// <returns>True = Inseriu na lista. False = Já está na lista</returns>
         public static bool TentaInserirServico(Servico s)
         {
             bool resposta = Servicos.InsereServico(s);
+            return resposta;
+        }
+
+        /// <summary>
+        /// Função que tenta encontrar o serviço na lista pelo id
+        /// </summary>
+        /// <param name="id">id do serviço</param>
+        /// <returns></returns>
+        public static Servico? TentaEncontrarServico(int id)
+        {
+            Servico? s = Servicos.QuemServico(id);
+            return s;
+
+        }
+
+        /// <summary>
+        /// Função que tenta remover um serviço à lista
+        /// </summary>
+        /// <param name="s">serviço</param>
+        /// <returns>True = Foi removido. False = Não está na lista</returns>
+        public static bool TentaRemoverServico(Servico s)
+        {
+            bool resposta = Servicos.RemoveServico(s);
             return resposta;
         }
 

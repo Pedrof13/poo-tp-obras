@@ -14,7 +14,7 @@ namespace BO
     /// <summary>
     /// Class que representa um servico de uma obra
     /// </summary>
-    public class Servico
+    public class Servico : IComparable
     {
         #region Atributos
         
@@ -77,19 +77,19 @@ namespace BO
 
         #region Overrides
 
-        /*
+        
         public override bool Equals(object obj)
         {
-            Servico aux;
             if(obj is Servico) // Verifica se o objeto é um Servico
             {
+                Servico aux;
                 aux = obj as Servico; //Converte o objeto
                 return (aux.Id == this.Id);
 
             }
             else return false;
         }
-        */
+        
         
         /// <summary>
         /// Operador para comprar se os serviços são iguais pelos ids
@@ -115,9 +115,30 @@ namespace BO
             return false;
         }
 
+
+
         #endregion
 
         #region OutrosMetodos
+
+        /// <summary>
+        /// Função para ordenar Servicos por id
+        /// Para usar apenas Sort()
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(object obj)
+        {
+            if(!(obj is Servico))
+            {
+                throw new ArgumentException("Impossível comparar com Servico, objeto do tipo inválido!");
+            }
+            Servico aux;
+            aux = obj as Servico;
+            return (this.Id.CompareTo(aux.Id));
+        }
+
         #endregion
 
         #endregion

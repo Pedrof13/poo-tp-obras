@@ -7,6 +7,8 @@
 * <copyright>Copyright (c) 2025. All rights reserved.</copyright>
 */
 
+//Camada de apresentação (PL - Presentation Layer)
+
 using System;
 using BO;
 using Regras;
@@ -17,6 +19,7 @@ namespace GereObra
     {
         static void Main(string[] args)
         {
+            Console.Write("ola");
             //Cria uma morada
             Morada m = new Morada();
 
@@ -27,9 +30,9 @@ namespace GereObra
             Obra o = new Obra(1,"Construção da ponte 123", m, hoje, amanha);
 
             //Cria um servico
-            Servico s = new Servico();
+            Servico s1 = new Servico();
 
-            bool res = ControlaServicos.TentaInserirServico(s);
+            bool res = ControlaServicos.TentaInserirServico(s1);
 
             if(res == true)
             {
@@ -39,6 +42,30 @@ namespace GereObra
             {
                 //erro
             }
+
+            Servico? s2 = ControlaServicos.TentaEncontrarServico(1);
+
+            if(s2 == null)
+            {
+                //Não encontrou
+            }
+            else
+            {
+                //Encontrou
+            }
+
+            res = ControlaServicos.TentaRemoverServico(s1);
+
+            if(res == true)
+            {
+                //Foi removido
+            }
+            else
+            {
+                //Não está na lista ou já tinha removido
+            }
+
+
         }
     }
 }

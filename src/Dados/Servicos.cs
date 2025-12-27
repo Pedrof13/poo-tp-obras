@@ -43,8 +43,37 @@ namespace Dados
         /// <returns></returns>
         public static bool InsereServico(Servico s)
         {
-            if(servicos.Contains(s)) return false;
-            servicos.Add(s);
+            if(servicos.Contains(s)) return false; //Verifica se existe na lista
+            servicos.Add(s); //Adiciona à lista
+            return true;
+        }
+
+        /// <summary>
+        /// Encontra o serviço numa lista pelo id
+        /// </summary>
+        /// <param name="id">id do serviço</param>
+        /// <returns>Serviço</returns>
+        public static Servico? QuemServico(int id)
+        {
+            foreach (Servico s in servicos) //Percorre a lista
+            {
+                if( s.Id == id)
+                {
+                    return s;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Remove um serviço na lista
+        /// </summary>
+        /// <param name="s">serviço</param>
+        /// <returns>True = Foi removido. False = Não está na lista</returns>
+        public static bool RemoveServico(Servico s)
+        {
+            if(!servicos.Contains(s)) return false;
+            servicos.Remove(s);
             return true;
         }
 
