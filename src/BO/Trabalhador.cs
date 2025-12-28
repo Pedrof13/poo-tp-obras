@@ -11,6 +11,10 @@ using System;
 
 namespace BO
 {
+    /// <summary>
+    /// Classe que representa um trabalhador de um serviço
+    /// </summary>
+    [Serializable]
     public class Trabalhador
     {
         #region Atributos

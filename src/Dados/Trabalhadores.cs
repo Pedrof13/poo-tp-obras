@@ -7,14 +7,16 @@
 * <copyright>Copyright (c) 2025. All rights reserved.</copyright>
 */
 
-using System;
+using System.Runtime.Serialization.Formatters.Binary;
 using BO;
+using TrataProblemas;
 
 namespace Dados
 {
     /// <summary>
     /// Classe que representa um conjunto de trabalhadores
     /// </summary>
+    [Serializable]
     public class Trabalhadores
     {
         #region Atributos
@@ -60,6 +62,153 @@ namespace Dados
             if(!trabalhadores.Contains(t) || t.Numero <= 0) return false;
             trabalhadores.Remove(t);
             return true;
+        }
+
+        /// <summary>
+        /// Método para contar o número de trabalhadores na lista
+        /// </summary>
+        /// <returns></returns>
+        public static int QuantosTrabalhadores()
+        {
+            return trabalhadores.Count;
+        }
+
+        /*
+        public static bool GravaTrabalhadoresBin(string nomeFicheiro)
+        {
+            if(File.Exists(nomeFicheiro))
+            {
+                try
+                {
+                    Stream stream = File.Open(nomeFicheiro, FileMode.Create);
+                    BinaryFormatter bin = new BinaryFormatter();
+                    bin.Serialize(stream, trabalhadores);
+                    stream.Close();
+                    return true;
+                }
+                catch(IOException ex)
+                {
+                    throw new FicheiroBinarioException(ex + "Erro na gravação do ficheiro");
+                }
+                catch(Exception ex)
+                {
+                    throw new FicheiroBinarioException(ex + "Erro inesperado do ficheiro");
+                }
+            }
+            return false;
+        }
+        */
+
+        /*
+        public static bool LeTrabalhadoresBin(string nomeFicheiro)
+        {
+            if(File.Exists(nomeFicheiro))
+            {
+                try
+                {
+                    Stream stream = File.Open(nomeFicheiro, FileMode.Open, FileAccess.Read);
+                    BinaryFormatter bin = new BinaryFormatter();
+                    trabalhadores = (List<Trabalhador>)bin.Deserialize(stream);
+                    stream.Close();
+                    return true;
+                }
+                catch(IOException ex)
+                {
+                    throw new FicheiroBinarioException(ex + "Erro na leitura do ficheiro");
+                }
+                catch(Exception ex)
+                {
+                    throw new FicheiroBinarioException(ex + "Erro inesperado do ficheiro");
+                }
+            }
+            return false;
+        }
+        */
+        
+        /// <summary>
+        /// Método para gravar a lista de trabalhadores em um ficheiro binário
+        /// </summary>
+        /// <param name="nomeFicheiro"></param>
+        /// <returns></returns>
+        /// <exception cref="FicheiroBinarioException"></exception>
+        public static bool GravarTrabalhadoresBin(string nomeFicheiro)
+        {
+            if(File.Exists(nomeFicheiro))
+            {
+                try
+                {
+                    FileStream fs = new FileStream(nomeFicheiro, FileMode.Create);
+                    BinaryWriter bw = new BinaryWriter(fs);
+
+                    bw.Write(trabalhadores.Count);
+
+                    foreach (Trabalhador t in trabalhadores)
+                    {
+                        bw.Write(t.Numero);
+                        bw.Write(t.Nome);
+                        bw.Write(t.Funcao);
+                        bw.Write(t.CustoPorHora);
+                    }
+                    bw.Close();
+                    fs.Close();
+                    return true;
+                }
+                catch(IOException ex) // Erro no sistema (externo)
+                {
+                    throw new FicheiroBinarioException(ex + "Erro na gravação do ficheiro");
+                }
+                catch(Exception ex) //Erros no código
+                {
+                    throw new FicheiroBinarioException(ex + "Erro inesperado do ficheiro");
+                }
+            }
+
+            return false;
+        }
+        
+        /// <summary>
+        /// Método para ler trabhadores num ficheiro binário
+        /// </summary>
+        /// <param name="nomeFicheiro"></param>
+        /// <returns></returns>
+        /// <exception cref="FicheiroBinarioException"></exception>
+        public static bool LerTrabalhadoresBin(string nomeFicheiro)
+        {
+            if(File.Exists(nomeFicheiro))
+            {
+                try
+                {
+                    FileStream fs = new FileStream(nomeFicheiro, FileMode.Open);
+                    BinaryReader br = new BinaryReader(fs);
+
+                    trabalhadores.Clear();
+
+                    int total = br.ReadInt32();
+
+                    for(int i = 0; i < total; i++)
+                    {
+                        Trabalhador t = new Trabalhador(
+                            br.ReadInt32(),
+                            br.ReadString(),
+                            br.ReadString(),
+                            br.ReadDouble()
+                        );
+                        trabalhadores.Add(t);
+                    }
+                    br.Close();
+                    fs.Close();
+                    return true;
+                }
+                catch(IOException ex)
+                {
+                    throw new FicheiroBinarioException(ex + "Erro na leitura do ficheiro");
+                }
+                catch(Exception ex)
+                {
+                    throw new FicheiroBinarioException(ex + "Erro inesperado do ficheiro");
+                }
+            }
+            return false;
         }
 
 

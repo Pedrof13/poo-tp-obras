@@ -9,9 +9,7 @@
 
 //Camada de apresentação (PL - Presentation Layer)
 
-using System;
 using BO;
-using Dados;
 using Regras;
 
 namespace GereObra
@@ -20,7 +18,6 @@ namespace GereObra
     {
         static void Main(string[] args)
         {
-            Console.Write("ola");
             //Cria uma morada
             Morada m = new Morada();
 
@@ -33,9 +30,10 @@ namespace GereObra
              //Cria um servico
             Servico s1 = new Servico();
             
+            /*
             //Cria uma obra completa
             Servicos obraCompleta = new Servicos();
-
+            
             bool res = ControlaServicos.TentaInserirServico(s1, obraCompleta);
 
             if(res == true)
@@ -69,7 +67,22 @@ namespace GereObra
                 //Não está na lista ou já tinha removido
             }
 
+            */
+            Trabalhador t1 = new Trabalhador(2, "Pedro", "Operador de máquinas", 1.5);
 
+            //bool res = ControlaTrabalhadores.TentaInserirTrabalhador(t1);
+
+            //res = ControlaTrabalhadores.TentaGravarBin("dados.bin");
+
+            bool res = ControlaTrabalhadores.TentaLerBin("dados.bin");
+
+            Console.WriteLine(res);
+
+            int n = ControlaTrabalhadores.TentaContarTrabalhadores();
+
+            Console.WriteLine(n);
+
+           
         }
     }
 }

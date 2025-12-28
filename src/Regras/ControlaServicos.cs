@@ -7,26 +7,16 @@
 * <copyright>Copyright (c) 2025. All rights reserved.</copyright>
 */
 
-using System;
 using Dados;
 using BO;
 
 namespace Regras
 {
+    /// <summary>
+    /// Classe para controlar Serviços
+    /// </summary>
     public class ControlaServicos
     {
-        #region Atributos
-        #endregion
-
-        #region Metodos
-
-        #region Construtores
-        #endregion
-
-        #region Propriedades
-        #endregion
-
-        #region OutrosMetodos
 
         /// <summary>
         /// Método que tenta inserir um serviço na lista
@@ -65,9 +55,5 @@ namespace Regras
             return resposta;
         }
 
-        #endregion
-
-        #endregion
     }
-
 }

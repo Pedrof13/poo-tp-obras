@@ -3,3 +3,6 @@
 # Dependências
 bin/
 obj/
+
+# Ficheiros gerados
+*.bin

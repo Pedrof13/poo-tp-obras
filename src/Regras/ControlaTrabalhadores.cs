@@ -7,7 +7,6 @@
 * <copyright>Copyright (c) 2025. All rights reserved.</copyright>
 */
 
-using System;
 using BO;
 using Dados;
 
@@ -16,10 +15,8 @@ namespace Regras
     /// <summary>
     /// Classe para controlar trabalhadores
     /// </summary>
-    class ControlaTrabalhadores
+    public class ControlaTrabalhadores
     {
-
-        #region Metodos
 
         /// <summary>
         /// Método para tentar inserir Trabalhador numa lista
@@ -42,7 +39,31 @@ namespace Regras
             bool resposta = Trabalhadores.RemoveTrabalhador(t);
             return resposta;
         }
-        #endregion
-    }
 
+        public static int TentaContarTrabalhadores()
+        {
+            int resposta = Trabalhadores.QuantosTrabalhadores();
+            return resposta;
+        }
+
+        /// <summary>
+        /// Método que tenta gravar um ficheiro binário
+        /// </summary>
+        /// <param name="nomeFicheiro"></param>
+        /// <returns></returns>
+        public static bool TentaGravarBin(string nomeFicheiro)
+        {
+            return Trabalhadores.GravarTrabalhadoresBin(nomeFicheiro);
+        }
+        
+        /// <summary>
+        /// Método que tenta ler um ficheiro binário
+        /// </summary>
+        /// <param name="nomeFicheiro"></param>
+        /// <returns></returns>
+        public static bool TentaLerBin(string nomeFicheiro)
+        {
+            return Trabalhadores.LerTrabalhadoresBin(nomeFicheiro);
+        }
+    }
 }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dados", "Dados\Dados.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regras", "Regras\Regras.csproj", "{32389C21-2F9F-407C-954C-9A608CA82C8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrataProblemas", "TrataProblemas\TrataProblemas.csproj", "{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{32389C21-2F9F-407C-954C-9A608CA82C8A}.Release|x64.Build.0 = Release|Any CPU
 		{32389C21-2F9F-407C-954C-9A608CA82C8A}.Release|x86.ActiveCfg = Release|Any CPU
 		{32389C21-2F9F-407C-954C-9A608CA82C8A}.Release|x86.Build.0 = Release|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Debug|x64.Build.0 = Debug|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Debug|x86.Build.0 = Debug|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Release|x64.ActiveCfg = Release|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Release|x64.Build.0 = Release|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Release|x86.ActiveCfg = Release|Any CPU
+		{FDB68EE1-4A91-4CF0-8E76-18766BE905D7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
