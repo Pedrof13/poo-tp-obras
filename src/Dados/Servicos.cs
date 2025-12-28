@@ -46,7 +46,7 @@ namespace Dados
         /// <returns></returns>
         public bool InsereServico(Servico s)
         {
-            if(servicos.Contains(s)) return false; //Verifica se existe na lista
+            if(servicos.Contains(s) || s.Id <= 0) return false; //Verifica se existe na lista ou se o id é válido
             servicos.Add(s); //Adiciona à lista
             return true;
         }
@@ -75,7 +75,7 @@ namespace Dados
         /// <returns>True = Foi removido. False = Não está na lista</returns>
         public bool RemoveServico(Servico s)
         {
-            if(!servicos.Contains(s)) return false;
+            if(!servicos.Contains(s) || s.Id <= 0) return false;
             servicos.Remove(s);
             return true;
         }

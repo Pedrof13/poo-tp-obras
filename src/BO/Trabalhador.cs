@@ -18,6 +18,7 @@ namespace BO
         int numero;
         string nome;
         string funcao;
+        double custoPorHora;
 
         #endregion
 
@@ -33,6 +34,7 @@ namespace BO
             numero = -1;
             nome = String.Empty;
             funcao = String.Empty;
+            custoPorHora = 0.0;
         }
 
         /// <summary>
@@ -40,12 +42,14 @@ namespace BO
         /// </summary>
         /// <param name="num">número do trabalhador</param>
         /// <param name="no">nome do trabalhador</param>
-        /// <param name="f">função do trabalhador</param>
-        public Trabalhador(int num, string no, string f)
+        /// <param name="f">funcção do trabalhador</param>
+        /// <param name="c">custo por hora</param>
+        public Trabalhador(int num, string no, string f, double c)
         {
             numero = num;
             nome = no;
             funcao = f;
+            custoPorHora = c;
         }
 
         #endregion
@@ -68,6 +72,12 @@ namespace BO
         {
             get { return funcao; }
             set { funcao = value; }
+        }
+
+        public double CustoPorHora
+        {
+            get { return custoPorHora; }
+            set { custoPorHora = value; }
         }
 
         #endregion

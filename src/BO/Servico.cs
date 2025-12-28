@@ -20,7 +20,9 @@ namespace BO
         
         int id;
         string descricao;
+        int horas; // Tempo de duração do serviço
         string estado;
+        Trabalhador responsavel;
 
         #endregion
 
@@ -35,7 +37,9 @@ namespace BO
         {
             id = -1;
             descricao = String.Empty;
-            estado = String.Empty;    
+            horas = 0;
+            estado = String.Empty;
+            responsavel = new Trabalhador();    
         }
 
         /// <summary>
@@ -43,12 +47,16 @@ namespace BO
         /// </summary>
         /// <param name="i">id do serviço</param>
         /// <param name="d">descrição do serviço</param>
+        /// <param name="h">tempo em horas para o serviço</param>
         /// <param name="e">estado do serviço</param>
-        public Servico(int i, string d, string e)
+        /// <param name="r">trabalhador responsável</param>
+        public Servico(int i, string d, int h ,string e, Trabalhador r)
         {
             id = i;
             descricao = d;
+            horas = h;
             estado = e;
+            responsavel = r;
         }
 
         #endregion
@@ -67,10 +75,22 @@ namespace BO
             set { descricao = value; }    
         }
 
+        public int Horas
+        {
+            get { return horas; }
+            set { if(value > 0) horas = value; }
+        }
+
         public string Estado
         {
             get { return estado; }
             set { estado = value; }
+        }
+
+        public Trabalhador Responsavel
+        {
+            get { return responsavel; }
+            set { responsavel = value; }
         }
 
         #endregion
