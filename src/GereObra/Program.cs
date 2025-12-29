@@ -7,9 +7,8 @@
 * <copyright>Copyright (c) 2025. All rights reserved.</copyright>
 */
 
-//Camada de apresentação (PL - Presentation Layer)
-
 using BO;
+using Dados;
 using Regras;
 
 namespace GereObra
@@ -18,6 +17,9 @@ namespace GereObra
     {
         static void Main(string[] args)
         {
+            //resposta
+            bool res = false;
+
             //Cria uma morada
             Morada m = new Morada();
 
@@ -27,14 +29,16 @@ namespace GereObra
             //Cria uma obra
             Obra o = new Obra(1,"Construção da ponte 123", m, hoje, amanha);
 
-             //Cria um servico
-            Servico s1 = new Servico();
+            //Cria um trabalhador
+            Trabalhador t1 = new Trabalhador(1, "Pedro", "Operador de máquinas", 1.5);
+
+            //Cria um servico
+            Servico s1 = new Servico(1, "Fazer ponte", 30, "Planeamento", t1);
             
-            /*
             //Cria uma obra completa
             Servicos obraCompleta = new Servicos();
-            
-            bool res = ControlaServicos.TentaInserirServico(s1, obraCompleta);
+
+            res = ControlaServicos.TentaInserirServico(s1, obraCompleta);
 
             if(res == true)
             {
@@ -45,16 +49,9 @@ namespace GereObra
                 //erro
             }
 
-            Servico? s2 = ControlaServicos.TentaEncontrarServico(1, obraCompleta);
+            res = ControlaServicos.TentaInserirServico(s1, obraCompleta);//Já foi inserido!!
 
-            if(s2 == null)
-            {
-                //Não encontrou
-            }
-            else
-            {
-                //Encontrou
-            }
+            res = ControlaServicos.TentaVerificarServico(1, obraCompleta);
 
             res = ControlaServicos.TentaRemoverServico(s1, obraCompleta);
 
@@ -67,20 +64,20 @@ namespace GereObra
                 //Não está na lista ou já tinha removido
             }
 
-            */
-            Trabalhador t1 = new Trabalhador(2, "Pedro", "Operador de máquinas", 1.5);
 
-            //bool res = ControlaTrabalhadores.TentaInserirTrabalhador(t1);
+            Trabalhador t2 = new Trabalhador(2, "José", "Pintor", 2.0);
+
+            res = ControlaTrabalhadores.TentaInserirTrabalhador(t1);
 
             //res = ControlaTrabalhadores.TentaGravarBin("dados.bin");
 
-            bool res = ControlaTrabalhadores.TentaLerBin("dados.bin");
+            res = ControlaTrabalhadores.TentaLerBin("dados.bin");
 
-            Console.WriteLine(res);
+            //Console.WriteLine(res);
 
             int n = ControlaTrabalhadores.TentaContarTrabalhadores();
 
-            Console.WriteLine(n);
+            //Console.WriteLine(n);
 
            
         }

@@ -12,22 +12,16 @@ namespace TrataProblemas
     /// <summary>
     /// Classe que serve para erros relacionados com ficheiros binários
     /// </summary>
-    [Serializable]
     public class FicheiroBinarioException : ApplicationException
     {
-        public FicheiroBinarioException() : base("Impossível"){}
+        public FicheiroBinarioException() : base("Ocorreu um erro ao processar o ficheiro binário") {}
 
-        public FicheiroBinarioException(string mensagem)
+        public FicheiroBinarioException(string mensagem) : base (mensagem) {}
+
+        public FicheiroBinarioException(string mensagem, Exception e)
         {
-            throw new Exception(mensagem + "Ocorreu um erro inesperado.");
+            throw new FicheiroBinarioException(e.Message + "ERRO" + mensagem);
         }
-
-        public FicheiroBinarioException(Exception e)
-        {
-            throw new FicheiroBinarioException(e.Message + "ERRO");
-        }
-
 
     }
-
 }

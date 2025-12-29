@@ -137,7 +137,7 @@ namespace Dados
             {
                 try
                 {
-                    FileStream fs = new FileStream(nomeFicheiro, FileMode.Create);
+                    FileStream fs = new FileStream(nomeFicheiro, FileMode.OpenOrCreate);
                     BinaryWriter bw = new BinaryWriter(fs);
 
                     bw.Write(trabalhadores.Count);
@@ -155,11 +155,11 @@ namespace Dados
                 }
                 catch(IOException ex) // Erro no sistema (externo)
                 {
-                    throw new FicheiroBinarioException(ex + "Erro na gravação do ficheiro");
+                    throw new FicheiroBinarioException("Erro na gravação do ficheiro", ex);
                 }
                 catch(Exception ex) //Erros no código
                 {
-                    throw new FicheiroBinarioException(ex + "Erro inesperado do ficheiro");
+                    throw new FicheiroBinarioException("Erro inesperado do ficheiro", ex);
                 }
             }
 
@@ -174,7 +174,7 @@ namespace Dados
         /// <exception cref="FicheiroBinarioException"></exception>
         public static bool LerTrabalhadoresBin(string nomeFicheiro)
         {
-            if(File.Exists(nomeFicheiro))
+            if(File.Exists(nomeFicheiro) && (new FileInfo(nomeFicheiro).Length > 0))
             {
                 try
                 {
@@ -201,11 +201,11 @@ namespace Dados
                 }
                 catch(IOException ex)
                 {
-                    throw new FicheiroBinarioException(ex + "Erro na leitura do ficheiro");
+                    throw new FicheiroBinarioException("Erro na leitura do ficheiro", ex);
                 }
                 catch(Exception ex)
                 {
-                    throw new FicheiroBinarioException(ex + "Erro inesperado do ficheiro");
+                    throw new FicheiroBinarioException("Erro inesperado do ficheiro", ex);
                 }
             }
             return false;

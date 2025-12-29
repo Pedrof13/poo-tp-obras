@@ -9,6 +9,7 @@
 
 using BO;
 using Dados;
+using TrataProblemas;
 
 namespace Regras
 {
@@ -57,7 +58,16 @@ namespace Regras
         /// <returns>True = Gravou. False = Ocorreu um erro</returns>
         public static bool TentaGravarBin(string nomeFicheiro)
         {
-            return Trabalhadores.GravarTrabalhadoresBin(nomeFicheiro);
+            bool resposta = false;
+            try
+            {
+                resposta = Trabalhadores.GravarTrabalhadoresBin(nomeFicheiro);
+            }
+            catch (FicheiroBinarioException ex)
+            {
+                throw new FicheiroBinarioException("Não conseguiu gravar", ex);
+            }
+            return resposta;
         }
         
         /// <summary>
@@ -67,7 +77,16 @@ namespace Regras
         /// <returns>True = Leu. False = Ocorreu um erro</returns>
         public static bool TentaLerBin(string nomeFicheiro)
         {
-            return Trabalhadores.LerTrabalhadoresBin(nomeFicheiro);
+            bool resposta = false;
+            try
+            {
+                resposta = Trabalhadores.LerTrabalhadoresBin(nomeFicheiro);
+            }
+            catch(FicheiroBinarioException ex)
+            {
+                throw new FicheiroBinarioException("Não conseguiu ler", ex);
+            }
+            return resposta;
         }
     }
 }
