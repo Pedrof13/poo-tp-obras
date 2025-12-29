@@ -6,3 +6,7 @@ obj/
 
 # Ficheiros gerados
 *.bin
+
+# Documentação gerada
+docs/Doxygen/html/
+docs/Doxygen/latex/
