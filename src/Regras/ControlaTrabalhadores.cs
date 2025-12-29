@@ -22,7 +22,7 @@ namespace Regras
         /// Método para tentar inserir Trabalhador numa lista
         /// </summary>
         /// <param name="t">Trabalhador</param>
-        /// <returns></returns>
+        /// <returns>True = Inseriu na lista. False = Já está na lista</returns>
         public static bool TentaInserirTrabalhador(Trabalhador t)
         {
             bool resposta = Trabalhadores.InsereTrabalhador(t);
@@ -33,13 +33,17 @@ namespace Regras
         /// Método para tentar remover Trabalhador numa lista
         /// </summary>
         /// <param name="t">Trabalhador</param>
-        /// <returns></returns>
+        /// <returns>True = Foi removido. False = Não está na lista</returns>
         public static bool TentaRemoverTrabalhador(Trabalhador t)
         {
             bool resposta = Trabalhadores.RemoveTrabalhador(t);
             return resposta;
         }
 
+        /// <summary>
+        /// Método para contar o número de trablhadores que tem na lista
+        /// </summary>
+        /// <returns>Número de trabalhadores na lista</returns>
         public static int TentaContarTrabalhadores()
         {
             int resposta = Trabalhadores.QuantosTrabalhadores();
@@ -49,8 +53,8 @@ namespace Regras
         /// <summary>
         /// Método que tenta gravar um ficheiro binário
         /// </summary>
-        /// <param name="nomeFicheiro"></param>
-        /// <returns></returns>
+        /// <param name="nomeFicheiro">Nome do ficheiro</param>
+        /// <returns>True = Gravou. False = Ocorreu um erro</returns>
         public static bool TentaGravarBin(string nomeFicheiro)
         {
             return Trabalhadores.GravarTrabalhadoresBin(nomeFicheiro);
@@ -59,8 +63,8 @@ namespace Regras
         /// <summary>
         /// Método que tenta ler um ficheiro binário
         /// </summary>
-        /// <param name="nomeFicheiro"></param>
-        /// <returns></returns>
+        /// <param name="nomeFicheiro">Nome do ficheiro</param>
+        /// <returns>True = Leu. False = Ocorreu um erro</returns>
         public static bool TentaLerBin(string nomeFicheiro)
         {
             return Trabalhadores.LerTrabalhadoresBin(nomeFicheiro);

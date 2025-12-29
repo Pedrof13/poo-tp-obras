@@ -45,11 +45,11 @@ namespace BO
         /// <summary>
         /// Cria uma obra com valores definidos pelos parâmetros
         /// </summary>
-        /// <param name="i">identificador único da obra</param>
-        /// <param name="n">nome da obra</param>
-        /// <param name="m">morada da obra</param>
-        /// <param name="inicio">data de inicio</param>
-        /// <param name="fim">data de fim prevista</param>
+        /// <param name="i">Identificador único da obra</param>
+        /// <param name="n">Nome da obra</param>
+        /// <param name="m">Morada da obra</param>
+        /// <param name="inicio">Data de inicio</param>
+        /// <param name="fim">Data de fim prevista</param>
         public Obra(int i, string n, Morada m, DateTime inicio, DateTime fim)
         {
             id = i;
@@ -95,11 +95,6 @@ namespace BO
 
         #endregion
 
-        #region OutrosMetodos
-
-        #endregion
-
         #endregion
     }
-
 }

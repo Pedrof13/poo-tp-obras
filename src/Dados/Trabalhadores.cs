@@ -41,10 +41,10 @@ namespace Dados
         #region OutrosMetodos
 
         /// <summary>
-        /// Método para inserir um trabalhador
+        /// Inserie um trabalhador na lista
         /// </summary>
         /// <param name="t">Trabalhador</param>
-        /// <returns>True = Inserido ; False = Está na lista ou é inválido</returns>
+        /// <returns>True = Inserido. False = Está na lista ou é inválido</returns>
         public static bool InsereTrabalhador(Trabalhador t)
         {
             if(trabalhadores.Contains(t) || t.Numero <= 0) return false;
@@ -53,10 +53,10 @@ namespace Dados
         }
 
         /// <summary>
-        /// Método para remover um trabalhador
+        /// Remove um trabalhador na lista
         /// </summary>
         /// <param name="t">Trabalhador</param>
-        /// <returns>True = Removido ; False = Não está na lista ou é inválido</returns>
+        /// <returns>True = Removido. False = Não está na lista ou é inválido</returns>
         public static bool RemoveTrabalhador(Trabalhador t)
         {
             if(!trabalhadores.Contains(t) || t.Numero <= 0) return false;
@@ -65,9 +65,9 @@ namespace Dados
         }
 
         /// <summary>
-        /// Método para contar o número de trabalhadores na lista
+        /// Conta o número de trabalhadores na lista
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Quantidade de trabalhadores</returns>
         public static int QuantosTrabalhadores()
         {
             return trabalhadores.Count;
@@ -126,10 +126,10 @@ namespace Dados
         */
         
         /// <summary>
-        /// Método para gravar a lista de trabalhadores em um ficheiro binário
+        /// Grava a lista de trabalhadores em um ficheiro binário
         /// </summary>
-        /// <param name="nomeFicheiro"></param>
-        /// <returns></returns>
+        /// <param name="nomeFicheiro">Nome do ficheiro</param>
+        /// <returns>True = Gravou. False = Erro</returns>
         /// <exception cref="FicheiroBinarioException"></exception>
         public static bool GravarTrabalhadoresBin(string nomeFicheiro)
         {
@@ -167,10 +167,10 @@ namespace Dados
         }
         
         /// <summary>
-        /// Método para ler trabhadores num ficheiro binário
+        /// Lê a lista trabhadores num ficheiro binário
         /// </summary>
-        /// <param name="nomeFicheiro"></param>
-        /// <returns></returns>
+        /// <param name="nomeFicheiro">Nome do ficheiro</param>
+        /// <returns>True = Gravou. False = Erro</returns>
         /// <exception cref="FicheiroBinarioException"></exception>
         public static bool LerTrabalhadoresBin(string nomeFicheiro)
         {
@@ -211,11 +211,8 @@ namespace Dados
             return false;
         }
 
-
-
         #endregion
 
         #endregion
     }
-
 }

@@ -18,7 +18,9 @@ namespace Dados
     public class Servicos : Obra
     {
         #region Atributos
+
         List<Servico> servicos;
+        
         #endregion
 
         #region Metodos
@@ -34,45 +36,43 @@ namespace Dados
         }
         #endregion
 
-        #region Propriedades
-        #endregion
-
         #region OutrosMetodos
 
         /// <summary>
-        /// Função para inserir um serviço à lista
+        /// Insere um serviço na lista
         /// </summary>
-        /// <param name="s">serviço</param>
-        /// <returns></returns>
+        /// <param name="s">Serviço</param>
+        /// <returns>True = Inseriu. False = Já está na lista ou é inválido</returns>
         public bool InsereServico(Servico s)
         {
-            if(servicos.Contains(s) || s.Id <= 0) return false; //Verifica se existe na lista ou se o id é válido
-            servicos.Add(s); //Adiciona à lista
+            if(servicos.Contains(s) || s.Id <= 0) return false;//Verifica se existe na lista ou se o id é válido
+            servicos.Add(s);//Adiciona à lista
+            servicos.Sort();//Ordena por id
             return true;
         }
 
         /// <summary>
-        /// Encontra o serviço numa lista pelo id
+        /// Verifica se o serviço está na lista
         /// </summary>
-        /// <param name="id">id do serviço</param>
-        /// <returns>Serviço</returns>
-        public Servico? QuemServico(int id)
+        /// <param name="id">Id do serviço</param>
+        /// <returns>True = Encontrou. False = Não está na lista</returns>
+        public bool ExisteServico(int id)
         {
-            foreach (Servico s in servicos) //Percorre a lista
+            foreach(Servico s in servicos)//Percorre a lista
             {
-                if( s.Id == id)
+                if(s.Id == id)
                 {
-                    return s;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
 
         /// <summary>
         /// Remove um serviço na lista
         /// </summary>
-        /// <param name="s">serviço</param>
-        /// <returns>True = Foi removido. False = Não está na lista</returns>
+        /// <param name="s">Serviço</param>
+        /// <returns>True = Foi removido. False = Não está na lista ou é inválido</returns>
         public bool RemoveServico(Servico s)
         {
             if(!servicos.Contains(s) || s.Id <= 0) return false;
@@ -80,9 +80,30 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Calcula a mão de obra do trablhador
+        /// </summary>
+        /// <param name="t">Trabalhador</param>
+        /// <returns>Custo da mão de obra</returns>
+        public double CalculaMaoDeObraTrabalhador(Trabalhador t)
+        {
+            int totalHoras = 0;
+
+            foreach(Servico s in servicos)//Percorre a lista
+            {
+               if(s.Responsavel == t)//Verifica se são iguais (operator)
+                {
+                    totalHoras = totalHoras + s.Horas;
+                }
+            }
+
+            double custo = t.CustoPorHora * totalHoras;
+
+            return custo;
+        }
+
         #endregion
 
         #endregion
     }
-
 }

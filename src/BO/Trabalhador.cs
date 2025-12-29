@@ -86,7 +86,50 @@ namespace BO
 
         #endregion
 
-        #region OutrosMetodos
+        #region Overrides
+
+        /// <summary>
+        /// Compara se os dois trabalhadores são iguais
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object? obj)
+        {
+            if(obj is Trabalhador)//Verifica se o objeto é um Trabalhador
+            {
+                Trabalhador aux;
+                aux = obj as Trabalhador;//Converte o objeto
+                return (aux.Numero == this.Numero);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Operador que compara dois trablhadores pelo número.
+        /// Verifica se são iguais
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool operator==(Trabalhador t1, Trabalhador t2)
+        {
+            if(t1.Numero == t2.Numero) return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Operador que compara dois trabalhadores pelo número.
+        /// Verifica se são diferentes
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static bool operator!=(Trabalhador t1, Trabalhador t2)
+        {
+            if(t1.Numero != t2.Numero) return true;
+            return false;
+        }
+
         #endregion
 
         #endregion

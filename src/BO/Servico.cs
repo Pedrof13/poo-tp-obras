@@ -20,7 +20,7 @@ namespace BO
         
         int id;
         string descricao;
-        int horas; // Tempo de duração do serviço
+        int horas;
         string estado;
         Trabalhador responsavel;
 
@@ -45,11 +45,11 @@ namespace BO
         /// <summary>
         /// Cria um serviço de uma obra com valores
         /// </summary>
-        /// <param name="i">id do serviço</param>
-        /// <param name="d">descrição do serviço</param>
-        /// <param name="h">tempo em horas para o serviço</param>
-        /// <param name="e">estado do serviço</param>
-        /// <param name="r">trabalhador responsável</param>
+        /// <param name="i">Id do serviço</param>
+        /// <param name="d">Descrição do serviço</param>
+        /// <param name="h">Tempo em horas para o serviço</param>
+        /// <param name="e">Estado do serviço</param>
+        /// <param name="r">Trabalhador responsável</param>
         public Servico(int i, string d, int h ,string e, Trabalhador r)
         {
             id = i;
@@ -92,50 +92,6 @@ namespace BO
             get { return responsavel; }
             set { responsavel = value; }
         }
-
-        #endregion
-
-        #region Overrides
-
-        
-        public override bool Equals(object obj)
-        {
-            if(obj is Servico) // Verifica se o objeto é um Servico
-            {
-                Servico aux;
-                aux = obj as Servico; //Converte o objeto
-                return (aux.Id == this.Id);
-
-            }
-            else return false;
-        }
-        
-        
-        /// <summary>
-        /// Operador para comprar se os serviços são iguais pelos ids
-        /// </summary>
-        /// <param name="s1"></param>
-        /// <param name="s2"></param>
-        /// <returns></returns>
-        public static bool operator==(Servico s1, Servico s2)
-        {
-            if(s1.Id == s2.Id) return true;
-            return false;
-        }
-
-        /// <summary>
-        /// Operador para comprar se os serviços são diferentes pelos ids
-        /// </summary>
-        /// <param name="s1"></param>
-        /// <param name="s2"></param>
-        /// <returns></returns>
-        public static bool operator!=(Servico s1, Servico s2)
-        {
-            if(s1.Id != s2.Id) return true;
-            return false;
-        }
-
-
 
         #endregion
 

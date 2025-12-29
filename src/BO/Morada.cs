@@ -10,9 +10,9 @@
 using System;
 
 namespace BO
-{
+{ 
     /// <summary>
-    /// Classe que representa uma localidade de uma obra
+    /// Classe que representa uma morada de uma obra
     /// </summary>
     public class Morada
     {
@@ -39,13 +39,14 @@ namespace BO
         /// <summary>
         /// Cria uma morada com os valores definidos pelos parâmetros
         /// </summary>
-        /// <param name="codigo">codigo postal</param>
-        /// <param name="local">localidade</param>
+        /// <param name="codigo">Codigo postal</param>
+        /// <param name="local">Localidade</param>
         public Morada(string codigo, string local)
         {
             codigoPostal = codigo;
             localidade = local;
         }
+
         #endregion
 
         #region Propriedades
@@ -64,10 +65,6 @@ namespace BO
 
         #endregion
 
-        #region OutrosMetodos
-        #endregion
-
         #endregion
     }
-
 }
