@@ -7,7 +7,6 @@
 * <copyright>Copyright (c) 2025. All rights reserved.</copyright>
 */
 
-using System;
 using BO;
 
 namespace Dados
@@ -15,7 +14,7 @@ namespace Dados
     /// <summary>
     /// Classe que representa uma obra com muitos serviços
     /// </summary>
-    public class Servicos : Obra
+    public class Servicos
     {
         #region Atributos
 

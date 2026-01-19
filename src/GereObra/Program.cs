@@ -17,6 +17,7 @@ namespace GereObra
     {
         static void Main(string[] args)
         {
+            
             //resposta
             bool res = false;
 
@@ -26,19 +27,21 @@ namespace GereObra
             DateTime hoje = new DateTime(2025, 12, 18);
             DateTime amanha = new DateTime(2025,12, 19);
 
-            //Cria uma obra
-            Obra o = new Obra(1,"Construção da ponte 123", m, hoje, amanha);
-
             //Cria um trabalhador
             Trabalhador t1 = new Trabalhador(1, "Pedro", "Operador de máquinas", 1.5);
 
             //Cria um servico
             Servico s1 = new Servico(1, "Fazer ponte", 30, "Planeamento", t1);
             
-            //Cria uma obra completa
-            Servicos obraCompleta = new Servicos();
+            //Cria serviços
+            Servicos servicos = new Servicos();
 
-            res = ControlaServicos.TentaInserirServico(s1, obraCompleta);
+            //Cria uma obra
+            ObraToda o = new ObraToda(1, "Construção da ponte 123", m, hoje, amanha, servicos);
+
+            res = ControlaObras.TentaInserirObra(o);
+
+            res = ControlaObras.TentaInserirServicoObra(s1, o.Id);
 
             if(res == true)
             {
@@ -49,11 +52,9 @@ namespace GereObra
                 //erro
             }
 
-            res = ControlaServicos.TentaInserirServico(s1, obraCompleta);//Já foi inserido!!
+            res = ControlaObras.TentaInserirServicoObra(s1, o.Id);//Já foi inserido!!
 
-            res = ControlaServicos.TentaVerificarServico(1, obraCompleta);
-
-            res = ControlaServicos.TentaRemoverServico(s1, obraCompleta);
+            res = ControlaObras.TentaRemoverServicoObra(s1, o.Id);
 
             if(res == true)
             {
@@ -66,18 +67,18 @@ namespace GereObra
 
 
             Trabalhador t2 = new Trabalhador(2, "José", "Pintor", 2.0);
-
+            
             res = ControlaTrabalhadores.TentaInserirTrabalhador(t1);
 
-            //res = ControlaTrabalhadores.TentaGravarBin("dados.bin");
+            res = ControlaTrabalhadores.TentaGravarBin("dados.bin");
+            
+            //bool res = ControlaTrabalhadores.TentaLerBin("dados.bin");
 
-            res = ControlaTrabalhadores.TentaLerBin("dados.bin");
-
-            //Console.WriteLine(res);
+            Console.WriteLine(res);
 
             int n = ControlaTrabalhadores.TentaContarTrabalhadores();
 
-            //Console.WriteLine(n);
+            Console.WriteLine(n);
 
            
         }

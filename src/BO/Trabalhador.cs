@@ -7,14 +7,14 @@
 * <copyright>Copyright (c) 2025. All rights reserved.</copyright>
 */
 
-using System;
+using System.Runtime.Serialization;
 
 namespace BO
 {
     /// <summary>
     /// Classe que representa um trabalhador de um serviço
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class Trabalhador
     {
         #region Atributos
@@ -60,24 +60,28 @@ namespace BO
 
         #region Propriedades
 
+        [DataMember]
         public int Numero
         {
             get { return numero; }
             set { if(value > 0) numero = value; }    
         }
 
+        [DataMember]
         public string Nome
         {
             get { return nome; }
             set { nome = value; }    
         }
 
+        [DataMember]
         public string Funcao
         {
             get { return funcao; }
             set { funcao = value; }
         }
 
+        [DataMember]
         public double CustoPorHora
         {
             get { return custoPorHora; }
@@ -128,6 +132,11 @@ namespace BO
         {
             if(t1.Numero != t2.Numero) return true;
             return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Numero.GetHashCode();
         }
 
         #endregion

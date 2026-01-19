@@ -1,4 +1,4 @@
-/*
+﻿/*
 * <file>ControlaTrabalhadores.cs</file>
 * <author>Pedro Sousa (a31514@alunos.ipca.pt)</author>
 * <sumary></summary>

@@ -7,7 +7,10 @@
 * <copyright>Copyright (c) 2025. All rights reserved.</copyright>
 */
 
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.DataContracts;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
 using BO;
 using TrataProblemas;
 
@@ -16,7 +19,6 @@ namespace Dados
     /// <summary>
     /// Classe que representa um conjunto de trabalhadores
     /// </summary>
-    [Serializable]
     public class Trabalhadores
     {
         #region Atributos
@@ -124,7 +126,7 @@ namespace Dados
             return false;
         }
         */
-        
+        /*
         /// <summary>
         /// Grava a lista de trabalhadores em um ficheiro binário
         /// </summary>
@@ -139,6 +141,8 @@ namespace Dados
                 {
                     FileStream fs = new FileStream(nomeFicheiro, FileMode.OpenOrCreate);
                     BinaryWriter bw = new BinaryWriter(fs);
+
+                    //REVER
 
                     bw.Write(trabalhadores.Count);
 
@@ -165,7 +169,9 @@ namespace Dados
 
             return false;
         }
-        
+        */
+
+        /*
         /// <summary>
         /// Lê a lista trabhadores num ficheiro binário
         /// </summary>
@@ -197,6 +203,83 @@ namespace Dados
                     }
                     br.Close();
                     fs.Close();
+                    return true;
+                }
+                catch(IOException ex)
+                {
+                    throw new FicheiroBinarioException("Erro na leitura do ficheiro", ex);
+                }
+                catch(Exception ex)
+                {
+                    throw new FicheiroBinarioException("Erro inesperado do ficheiro", ex);
+                }
+            }
+            return false;
+        }
+        */
+
+        /// <summary>
+        /// Grava a lista de trabalhadores em um ficheiro binário
+        /// </summary>
+        /// <param name="nomeFicheiro">Nome do ficheiro</param>
+        /// <returns>True = Gravou. False = Erro</returns>
+        /// <exception cref="FicheiroBinarioException"></exception>
+        public static bool GravarTrabalhadoresBin(string nomeFicheiro)
+        {
+            if(File.Exists(nomeFicheiro) && (new FileInfo(nomeFicheiro).Length > 0))
+            {
+                try
+                {
+                    DataContractSerializer serializer = new DataContractSerializer(typeof(List<Trabalhador>));
+
+                    using(FileStream fs = new FileStream(nomeFicheiro, FileMode.OpenOrCreate))
+                    {
+                        //Cria um writer binário
+                        using(XmlDictionaryWriter writer = XmlDictionaryWriter.CreateBinaryWriter(fs))
+                        {
+                            //serializa a lista inteira em formato binário
+                            serializer.WriteObject(writer, trabalhadores);
+                        }
+                    }
+
+                    return true;
+                }
+                catch(IOException ex) // Erro no sistema (externo)
+                {
+                    throw new FicheiroBinarioException("Erro na gravação do ficheiro", ex);
+                }
+                catch(Exception ex) //Erros no código
+                {
+                    throw new FicheiroBinarioException("Erro inesperado do ficheiro", ex);
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Lê a lista trabhadores num ficheiro binário
+        /// </summary>
+        /// <param name="nomeFicheiro">Nome do ficheiro</param>
+        /// <returns>True = Gravou. False = Erro</returns>
+        /// <exception cref="FicheiroBinarioException"></exception>
+        public static bool LerTrabalhadoresBin(string nomeFicheiro)
+        {
+            if(File.Exists(nomeFicheiro) && (new FileInfo(nomeFicheiro).Length > 0))
+            {
+                try
+                {
+                    DataContractSerializer serializer = new DataContractSerializer(typeof(List<Trabalhador>));
+
+                    using (FileStream fs = new FileStream(nomeFicheiro, FileMode.Open))
+                    {
+                        //Cria um reader binário
+                        using(XmlDictionaryReader reader = XmlDictionaryReader.CreateBinaryReader(fs, XmlDictionaryReaderQuotas.Max))
+                        {
+                            //Reconstroi a lista a partir dos bytes binários
+                            trabalhadores = (List<Trabalhador>)serializer.ReadObject(reader);
+                        }
+                    }
+                    
                     return true;
                 }
                 catch(IOException ex)
