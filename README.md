@@ -16,6 +16,21 @@ poo-tp-obras/
 └── README.md   # Documentação do projeto
 ```
 
+## Comandos
+A partir da raiz do projeto pode executar os seguintes comandos:
+
+### Execução do programa
+```bash
+cd src/GereObra
+dotnet run
+```
+
+### Gerar documentação doxygen
+```bash
+cd docs/Doxygen
+doxygen Doxyfile
+```
+
 ## Autor
 | Nome | Número |
 |:----:|:-----:|
