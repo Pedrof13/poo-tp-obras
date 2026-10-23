@@ -1,4 +1,4 @@
-# Projeto POO
+# Trabalho Prático POO - Gestão de Obras
 Este projeto foi desenvolvido no âmbito da unidade curricular Programação Orientada a Objetos no ano letivo 2025/2026,
 com o objetivo de desenvolver uma solução em linguagem C# para problemas 
 reais de complexidade moderada. Serão identificadas classes, definidas estruturas de 
